@@ -9,7 +9,7 @@ function ST7789() {
     var LCD_HEIGHT = 240;
     var XOFF = 0;
     var YOFF = 0;
-    var INVERSE = 1;
+    var INVERSE = 0;
     var cmd = lcd_spi_unbuf.command;
 
     function dispinit(rst,fn) {
@@ -23,7 +23,8 @@ function ST7789() {
         cmd(0x11); //SLPOUT
         delayms(50);
         //MADCTL: Set Memory access control (directions), 1 arg: row addr/col addr, bottom to top refresh
-        cmd(0x36, 0xC8);
+        //cmd(0x36, 0xC8);
+        cmd(0x36, 0x40);
         //COLMOD: Set color mode, 1 arg, no delay: 16-bit color
         cmd(0x3a, 0x05);
         //PORCTRL: Porch control
